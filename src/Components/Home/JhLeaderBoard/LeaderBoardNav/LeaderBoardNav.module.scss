@@ -1,0 +1,33 @@
+@import "src/Styles/variables.scss";
+
+.leaderBoardNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: #343a40;
+  width: 900px;
+  margin-top: 40px;
+  border-radius: 8px;
+}
+
+.leaderBoardNav>button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 8px;
+  user-select: none;
+
+  &.active {
+    background-color: #ffc906;
+    box-shadow: 0 0 10px #ffc906;
+    color: #000;
+  }
+}

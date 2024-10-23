@@ -1,10 +1,10 @@
 import s from "./Home.module.scss";
-import JhLeaderBoard from "./JhLeaderBoard/JhLeaderBoard";
+import JhLeaderBoardSection from "./JhLeaderBoard/JhLeaderBoardSection";
 
 const Home = () => {
   return (
     <main className={s.home}>
-      <JhLeaderBoard />
+      <JhLeaderBoardSection />
     </main>
   );
 };

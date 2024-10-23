@@ -13,3 +13,26 @@ body {
   background-color: #26292a;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@include large {
+  .container {
+    width: 85%;
+  }
+}
+
+@include medium {
+  .container {
+    width: 90%;
+  }
+}
+
+@include small {
+  .container {
+    width: 95%;
+  }
+}
