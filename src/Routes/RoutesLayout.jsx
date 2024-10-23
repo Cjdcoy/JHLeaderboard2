@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
+import Home from "../Components/Home/Home";
 
 const RoutesLayout = () => {
   return (
     <div className="App">
-      <Outlet />
+      <Home />
     </div>
   );
 };

@@ -1,0 +1,77 @@
+@import 'src/Styles/mixins.scss';
+
+.leaderboardWrapper {
+  padding: 20px 0;
+  max-width: 900px;
+  margin: 120px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.leaderboardWrapper>h2 {
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+.leaderBoardSection {
+  border-radius: 8px;
+
+  table {
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    & {
+      tr {
+        flex: 1;
+        display: flex;
+      }
+
+      tr :where(th, td) {
+        flex: 1;
+      }
+    }
+  }
+
+  thead {
+    background-color: #343a40;
+    color: #fff;
+
+    th {
+      padding: 15px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-align: start;
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #f1f3f5;
+      }
+
+      &:hover {
+        background-color: #e9ecef;
+        cursor: pointer;
+      }
+    }
+
+    td {
+      padding: 15px;
+      font-size: 15px;
+      color: #495057;
+      border-bottom: 1px solid #dee2e6;
+
+      &:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+}
