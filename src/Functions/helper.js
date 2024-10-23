@@ -3,3 +3,6 @@ export const capitalize = (str) =>
 
 export const getFpsNoun = (src) =>
   src === "0" ? "mix" : src === "999" ? "all" : src;
+
+export const getFpsNumber = (src) =>
+  src === "mix" ? "0" : src === "all" ? "999" : src;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import leaderBoardData from "src/Data/leaderboards.json";
-import { getFpsNoun } from "src/Functions/helper";
+import { getFpsNoun, getFpsNumber } from "src/Functions/helper";
 import s from "./JhLeaderBoardSection.module.scss";
 import JhLeaderBoardTable from "./JhLeaderBoardTable/JhLeaderBoardTable";
 import LeaderBoardNav from "./LeaderBoardNav/LeaderBoardNav";
@@ -25,8 +25,11 @@ const JhLeaderBoardSection = () => {
         setActiveLink={setActiveFps}
       />
 
-      {leaderBoard[activeFps] && (
-        <JhLeaderBoardTable data={leaderBoard[activeFps]} keyName={activeFps} />
+      {getFpsNumber(activeFps) && (
+        <JhLeaderBoardTable
+          data={leaderBoard[getFpsNumber(activeFps)]}
+          keyName={activeFps}
+        />
       )}
     </section>
   );
