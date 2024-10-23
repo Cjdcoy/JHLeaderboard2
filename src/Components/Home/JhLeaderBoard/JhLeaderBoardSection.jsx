@@ -43,6 +43,12 @@ const JhLeaderBoardSection = () => {
       {getFpsNumber(activeFps) && (
         <JhLeaderBoardTable data={activeLeaderBoardData} keyName={activeFps} />
       )}
+
+      {activeLeaderBoardData && (
+        <p className={s.noPlayerFound}>
+          There is no player with name <span>{searchParams.get("player")}</span>
+        </p>
+      )}
     </section>
   );
 };
