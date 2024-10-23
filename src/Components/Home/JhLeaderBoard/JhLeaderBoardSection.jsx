@@ -5,6 +5,7 @@ import { getFpsNoun, getFpsNumber } from "src/Functions/helper";
 import s from "./JhLeaderBoardSection.module.scss";
 import JhLeaderBoardTable from "./JhLeaderBoardTable/JhLeaderBoardTable";
 import LeaderBoardNav from "./LeaderBoardNav/LeaderBoardNav";
+import SearchInput from "./SearchInput/SearchInput";
 
 const JhLeaderBoardSection = () => {
   const [leaderBoard, setLeaderBoard] = useState(leaderBoardData);
@@ -19,6 +20,11 @@ const JhLeaderBoardSection = () => {
 
   return (
     <section className={s.leaderBoardSection}>
+      <SearchInput
+        setLeaderBoard={setLeaderBoard}
+        activeFps={getFpsNumber(activeFps)}
+      />
+
       <LeaderBoardNav
         navLinks={leaderBoardKeys}
         activeLink={activeFps}
