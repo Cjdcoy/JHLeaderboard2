@@ -1,12 +1,11 @@
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import leaderBoardData from "src/Data/leaderboards.json";
 import { getFpsNoun, getFpsNumber } from "src/Functions/helper";
 import s from "./JhLeaderBoardSection.module.scss";
 import JhLeaderBoardTable from "./JhLeaderBoardTable/JhLeaderBoardTable";
 import LeaderBoardNav from "./LeaderBoardNav/LeaderBoardNav";
-import SearchInput from "./SearchInput/SearchInput";
-import { getFilterLeaderBoard } from "./SearchInput/SearchInput";
+import SearchInput, { getFilterLeaderBoard } from "./SearchInput/SearchInput";
 
 const JhLeaderBoardSection = () => {
   const [leaderBoard, setLeaderBoard] = useState(leaderBoardData);
@@ -14,6 +13,7 @@ const JhLeaderBoardSection = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [activeFps, setActiveFps] = useState(searchParams.get("fps") || "125");
   const activeLeaderBoardData = leaderBoard[getFpsNumber(activeFps)];
+  const noDataFound = Object.keys(activeLeaderBoardData).length === 0;
 
   useLayoutEffect(() => {
     const editedActiveFps = getFpsNoun(activeFps);
@@ -44,7 +44,7 @@ const JhLeaderBoardSection = () => {
         <JhLeaderBoardTable data={activeLeaderBoardData} keyName={activeFps} />
       )}
 
-      {activeLeaderBoardData && (
+      {noDataFound && (
         <p className={s.noPlayerFound}>
           There is no player with name <span>{searchParams.get("player")}</span>
         </p>
