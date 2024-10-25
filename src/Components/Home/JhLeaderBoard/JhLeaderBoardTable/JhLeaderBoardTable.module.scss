@@ -15,6 +15,7 @@
 
 .leaderBoardTable {
   border-collapse: collapse;
+  table-layout: fixed;
   background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
@@ -31,6 +32,7 @@
     tr :where(th, td) {
       flex: 1;
       text-wrap: nowrap;
+      text-align: left;
     }
   }
 
@@ -43,7 +45,6 @@
       font-size: 1rem;
       font-weight: 600;
       text-transform: uppercase;
-      text-align: start;
     }
   }
 
@@ -69,5 +70,42 @@
         font-weight: bold;
       }
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .leaderBoardTable {
+    border: 0;
+  }
+
+  .leaderBoardTable thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .leaderBoardTable tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  .leaderBoardTable td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  .leaderBoardTable td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 }
