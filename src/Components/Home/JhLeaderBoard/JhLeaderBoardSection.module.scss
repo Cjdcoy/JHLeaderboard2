@@ -2,9 +2,15 @@
 
 .leaderBoardSection {
   border-radius: 8px;
-  width: fit-content;
+  width: 900px;
   margin: 0 auto;
   padding: 60px 0;
+}
+
+@include large {
+  .leaderBoardSection {
+    width: 100%;
+  }
 }
 
 .noPlayerFound {

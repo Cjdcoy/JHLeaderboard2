@@ -1,4 +1,4 @@
-@import "src/Styles/variables.scss";
+@import "src/Styles/mixins.scss";
 
 .leaderboardWrapper {
   width: 100%;
@@ -22,74 +22,78 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-
-  & {
-    tr {
-      flex: 1;
-      display: flex;
-    }
-
-    tr :where(th, td) {
-      flex: 1;
-      text-wrap: nowrap;
-      text-align: left;
-
-      &:first-child {
-        flex: 0.4;
-      }
-
-      &:nth-child(2) {
-        flex: 1.5;
-      }
-
-      &:last-child {
-        min-width: 400px;
-      }
-    }
-  }
-
-  thead {
-    background-color: #343a40;
-    color: #fff;
-
-    th {
-      padding: 15px;
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-  }
-
-  tbody {
-    tr {
-      &:nth-child(even) {
-        background-color: #f1f3f5;
-      }
-
-      &:hover {
-        background-color: #e9ecef;
-        cursor: pointer;
-      }
-    }
-
-    td {
-      padding: 15px;
-      font-size: 15px;
-      color: #495057;
-      border-bottom: 1px solid #dee2e6;
-
-      &:first-child {
-        font-weight: bold;
-      }
-    }
-  }
 }
 
 @media (max-width: 600px) {
   .leaderBoardTable {
     border: 0;
   }
+}
 
+.leaderBoardTable tr {
+  flex: 1;
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .leaderBoardTable tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+}
+
+.leaderBoardTable tr :where(th, td) {
+  flex: 1;
+  text-wrap: nowrap;
+  text-align: left;
+
+  &:first-child {
+    flex: 0.4;
+  }
+
+  &:nth-child(2) {
+    flex: 1.5;
+  }
+
+  &:last-child {
+    min-width: 400px;
+  }
+}
+
+@include large {
+  .leaderBoardTable tr :where(th, td) {
+    &:nth-child(2) {
+      flex: 1;
+      text-wrap: wrap;
+    }
+
+    &:nth-child(3) {
+      flex: .5;
+    }
+
+    &:last-child {
+      min-width: auto;
+      text-wrap: wrap;
+      line-height: 1.5;
+      flex: 1;
+    }
+  }
+}
+
+.leaderBoardTable thead {
+  background-color: #343a40;
+  color: #fff;
+
+  & th {
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 600px) {
   .leaderBoardTable thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -100,13 +104,31 @@
     position: absolute;
     width: 1px;
   }
+}
 
-  .leaderBoardTable tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
+.leaderBoardTable tbody tr {
+  &:nth-child(even) {
+    background-color: #f1f3f5;
   }
 
+  &:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+  }
+}
+
+.leaderBoardTable tbody td {
+  padding: 15px;
+  font-size: 15px;
+  color: #495057;
+  border-bottom: 1px solid #dee2e6;
+
+  &:first-child {
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 600px) {
   .leaderBoardTable td {
     border-bottom: 1px solid #ddd;
     display: block;
