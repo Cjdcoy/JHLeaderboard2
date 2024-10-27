@@ -13,10 +13,10 @@ const JhLeaderBoardTable = ({ data, keyName }) => {
       <table className={s.leaderBoardTable}>
         <thead className={s.leaderBoardHead}>
           <tr>
-            <th scope="col">Rank</th>
-            <th scope="col">Player Name</th>
-            <th scope="col">Score</th>
-            <th scope="col">Tops 1 - 10</th>
+            <th>Rank</th>
+            <th>Player Name</th>
+            <th>Score</th>
+            <th>Tops 1 - 10</th>
           </tr>
         </thead>
 
@@ -26,7 +26,7 @@ const JhLeaderBoardTable = ({ data, keyName }) => {
 
             return (
               <tr key={`${playerName}-${index}`}>
-                <td scope="row" data-label="Rank">{index + 1}</td>
+                <td data-label="Rank">{index + 1}</td>
                 <td data-label="Player Name">{playerName}</td>
                 <td data-label="Score">{data[playerName].Score}</td>
                 <td data-label="Tops 1 - 10">[{places}]</td>

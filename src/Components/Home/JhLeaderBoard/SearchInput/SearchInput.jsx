@@ -26,7 +26,7 @@ const SearchInput = ({ setLeaderBoard, activeFps }) => {
         type="text"
         value={inpValue}
         onChange={handleOnChange}
-        placeholder="Player search..."
+        placeholder="Search for player name"
       />
     </form>
   );
