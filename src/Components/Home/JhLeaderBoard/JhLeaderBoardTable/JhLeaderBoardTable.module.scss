@@ -33,6 +33,18 @@
       flex: 1;
       text-wrap: nowrap;
       text-align: left;
+
+      &:first-child {
+        flex: 0.4;
+      }
+
+      &:nth-child(2) {
+        flex: 1.5;
+      }
+
+      &:last-child {
+        min-width: 400px;
+      }
     }
   }
 

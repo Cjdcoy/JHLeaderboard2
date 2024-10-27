@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import leaderBoardData from "src/Data/leaderboards.json";
-import { getFpsNumber } from "../../../../Functions/helper";
+import { getFpsNumber } from "src/Functions/helper";
 import s from "./SearchInput.module.scss";
 
 const SearchInput = ({ setLeaderBoard, activeFps }) => {
