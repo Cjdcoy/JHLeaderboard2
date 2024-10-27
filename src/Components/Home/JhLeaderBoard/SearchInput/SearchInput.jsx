@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import leaderBoardData from "src/Data/leaderboards.json";
+import { getFpsNumber } from "../../../../Functions/helper";
 import s from "./SearchInput.module.scss";
 
 const SearchInput = ({ setLeaderBoard, activeFps }) => {
@@ -9,6 +10,7 @@ const SearchInput = ({ setLeaderBoard, activeFps }) => {
 
   function handleOnChange(e) {
     const searchQuery = e?.target?.value;
+
     setInpValue(searchQuery);
     setSearchParams({
       ...Object.fromEntries(searchParams),
@@ -32,9 +34,11 @@ const SearchInput = ({ setLeaderBoard, activeFps }) => {
 export default SearchInput;
 
 export function getFilterLeaderBoard(searchQuery, activeFps) {
+  activeFps = getFpsNumber(activeFps);
+
   const playersNames = Object.keys(leaderBoardData[activeFps]);
   const filteredPlayersNames = playersNames.filter((playerName) =>
-    playerName.toLowerCase().includes(searchQuery.toLowerCase())
+    playerName.toLowerCase().includes(searchQuery?.toLowerCase())
   );
 
   const filteredCurrentFpsData = filteredPlayersNames.reduce(
