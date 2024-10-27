@@ -1,4 +1,4 @@
-@import "src/Styles/variables.scss";
+@import "src/Styles/mixins.scss";
 
 .leaderBoardNav {
   display: flex;
@@ -10,6 +10,14 @@
   width: 100%;
   margin-top: 40px;
   border-radius: 8px;
+}
+
+@include small {
+  .leaderBoardNav {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .leaderBoardNav>button {
