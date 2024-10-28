@@ -1,7 +1,7 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import leaderBoardData from "src/Data/leaderboards.json";
-import { getFpsNoun, getFpsNumber } from "src/Functions/helper";
+import { getFixedParams, getFpsNoun, getFpsNumber } from "src/Functions/helper";
 import s from "./JhLeaderBoardSection.module.scss";
 import JhLeaderBoardTable from "./JhLeaderBoardTable/JhLeaderBoardTable";
 import LeaderBoardNav from "./LeaderBoardNav/LeaderBoardNav";
@@ -26,6 +26,10 @@ const JhLeaderBoardSection = () => {
       getFilterLeaderBoard(searchParams.get("player") || "", activeFps)
     );
   }, [activeFps]);
+
+  useEffect(() => {
+    setSearchParams(getFixedParams());
+  }, [searchParams]);
 
   return (
     <section className={s.leaderBoardSection}>

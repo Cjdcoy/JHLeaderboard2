@@ -6,3 +6,17 @@ export const getFpsNoun = (src) =>
 
 export const getFpsNumber = (src) =>
   src === "mix" ? "0" : src === "all" ? "999" : src;
+
+export const getParams = () =>
+  Object.fromEntries(new URLSearchParams(window.location.search));
+
+export function getFixedParams() {
+  const params = getParams();
+  const filteredParams = {};
+
+  for (const key in params) {
+    if (params[key] !== "") filteredParams[key] = params[key];
+  }
+
+  return filteredParams;
+}
