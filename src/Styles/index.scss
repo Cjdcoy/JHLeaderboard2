@@ -14,6 +14,10 @@ body {
   font-family: 'SFMono', 'Inter', 'San Francisco', -apple-system, system-ui;
 }
 
+main {
+  min-height: 100vh;
+}
+
 .container {
   width: 80%;
   margin: 0 auto;
