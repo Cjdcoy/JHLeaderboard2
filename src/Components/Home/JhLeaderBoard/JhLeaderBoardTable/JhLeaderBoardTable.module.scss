@@ -36,7 +36,7 @@
   text-align: left;
 
   &:first-child {
-    flex: 0.4;
+    flex: .4;
   }
 
   &:nth-child(2) {
@@ -95,11 +95,11 @@
 
 .leaderBoardTable tbody tr {
   &:nth-child(even) {
-    background-color: #f1f3f5;
+    background-color: #f9f9f9;
   }
 
   &:hover {
-    background-color: #e9ecef;
+    background-color: #f2f3f5;
     cursor: pointer;
   }
 }
@@ -131,6 +131,7 @@
 
   .leaderBoardTable td::before {
     content: attr(data-label);
+    color: #495057;
     float: left;
     font-weight: bold;
     text-transform: uppercase;
@@ -166,4 +167,10 @@
     translate: -50% 0;
     top: 0;
   }
+}
+
+.leaderBoardTable .bracket {
+  font-size: 1.1rem;
+  position: relative;
+  top: 2px;
 }

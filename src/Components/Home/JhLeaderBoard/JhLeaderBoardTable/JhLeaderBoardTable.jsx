@@ -23,13 +23,26 @@ const JhLeaderBoardTable = ({ data, keyName }) => {
         <tbody className={s.leaderBoardBody}>
           {playersNames.map((playerName, index) => {
             const places = data[playerName].Places.join(", ");
+            const rank = index + 1;
+            const rankNoun =
+              rank === 1
+                ? "1st"
+                : rank === 2
+                ? "2nd"
+                : rank === 3
+                ? "3rd"
+                : rank;
 
             return (
               <tr key={`${playerName}-${index}`}>
-                <td data-label="Rank">{index + 1}</td>
+                <td data-label="Rank">{rankNoun}</td>
                 <td data-label="Player Name">{playerName}</td>
                 <td data-label="Score">{data[playerName].Score}</td>
-                <td data-label="Tops 1 - 10">[{places}]</td>
+                <td data-label="Tops 1 - 10">
+                  <span className={s.bracket}>[</span>
+                  {places}
+                  <span className={s.bracket}>]</span>
+                </td>
               </tr>
             );
           })}
