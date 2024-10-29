@@ -34,8 +34,6 @@
   flex: 1;
   text-wrap: nowrap;
   text-align: left;
-  display: flex;
-  align-items: center;
 
   &:first-child {
     flex: .4;
@@ -62,10 +60,21 @@
     }
 
     &:last-child {
-      min-width: auto;
+      min-width: 420px;
       text-wrap: wrap;
       line-height: 1.5;
       flex: 1;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .leaderBoardTable tr :where(th, td) {
+    display: flex;
+    align-items: center;
+
+    &:last-child {
+      min-width: auto;
     }
   }
 }
