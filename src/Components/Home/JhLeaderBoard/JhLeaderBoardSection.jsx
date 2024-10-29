@@ -1,7 +1,12 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import leaderBoardData from "src/Data/leaderboards.json";
-import { getFixedParams, getFpsNoun, getFpsNumber } from "src/Functions/helper";
+import {
+  getFixedFps,
+  getFixedParams,
+  getFpsNoun,
+  getFpsNumber,
+} from "src/Functions/helper";
 import s from "./JhLeaderBoardSection.module.scss";
 import JhLeaderBoardTable from "./JhLeaderBoardTable/JhLeaderBoardTable";
 import LeaderBoardNav from "./LeaderBoardNav/LeaderBoardNav";
@@ -11,8 +16,10 @@ const JhLeaderBoardSection = () => {
   const [leaderBoard, setLeaderBoard] = useState(leaderBoardData);
   const leaderBoardKeys = Object.keys(leaderBoard);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [activeFps, setActiveFps] = useState(searchParams.get("fps") || "125");
-  const activeLeaderBoardData = leaderBoard[getFpsNumber(activeFps)];
+  const [activeFps, setActiveFps] = useState(
+    getFixedFps(searchParams.get("fps"))
+  );
+  const activeLeaderBoardData = leaderBoard[getFpsNumber(activeFps)] || {};
   const noDataFound = Object.keys(activeLeaderBoardData).length === 0;
 
   useLayoutEffect(() => {

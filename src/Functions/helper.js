@@ -1,4 +1,4 @@
-import { VALID_PARAMS } from "../Data/variables";
+import { VALID_FPS, VALID_PARAMS } from "../Data/variables";
 
 export const capitalize = (str) =>
   str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
@@ -18,8 +18,13 @@ export function getFixedParams() {
 
   for (const key in params) {
     const isValidParam = VALID_PARAMS.includes(key);
-    if (params[key] !== "" && isValidParam) filteredParams[key] = params[key];
+    const isEmptyParamValue = params[key] !== "";
+    if (isEmptyParamValue && isValidParam) filteredParams[key] = params[key];
   }
 
   return filteredParams;
+}
+
+export function getFixedFps(fps) {
+  return VALID_FPS.includes(fps) ? fps : "125";
 }
