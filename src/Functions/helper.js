@@ -1,3 +1,5 @@
+import { VALID_PARAMS } from "../Data/variables";
+
 export const capitalize = (str) =>
   str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
 
@@ -15,7 +17,8 @@ export function getFixedParams() {
   const filteredParams = {};
 
   for (const key in params) {
-    if (params[key] !== "") filteredParams[key] = params[key];
+    const isValidParam = VALID_PARAMS.includes(key);
+    if (params[key] !== "" && isValidParam) filteredParams[key] = params[key];
   }
 
   return filteredParams;
