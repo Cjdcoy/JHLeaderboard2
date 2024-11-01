@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import leaderBoardData from "src/Data/leaderboards.json";
 import { getFpsNumber } from "src/Functions/helper";
@@ -7,17 +7,21 @@ import s from "./SearchInput.module.scss";
 const SearchInput = ({ setLeaderBoard, activeFps }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [inpValue, setInpValue] = useState(searchParams.get("player") || "");
+  const searchTimerId = useRef();
 
   function handleOnChange(e) {
+    clearTimeout(searchTimerId.current);
+
     const searchQuery = e?.target?.value;
-
     setInpValue(searchQuery);
-    setSearchParams({
-      ...Object.fromEntries(searchParams),
-      player: searchQuery,
-    });
 
-    setLeaderBoard(getFilterLeaderBoard(searchQuery, activeFps));
+    searchTimerId.current = setTimeout(() => {
+      setSearchParams({
+        ...Object.fromEntries(searchParams),
+        player: searchQuery,
+      });
+      setLeaderBoard(getFilterLeaderBoard(searchQuery, activeFps));
+    }, 200);
   }
 
   return (
