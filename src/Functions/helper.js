@@ -28,3 +28,14 @@ export function getFixedParams() {
 export function getFixedFps(fps) {
   return VALID_FPS.includes(fps) ? fps : "125";
 }
+
+export function getSortedLeaderBoard(data, sortKey = "Score") {
+  const sortedData = [];
+
+  for (const key in data) {
+    data[key].name = key;
+    sortedData.push(data[key]);
+  }
+
+  return sortedData.sort((a, b) => b[sortKey] - a[sortKey]);
+}
