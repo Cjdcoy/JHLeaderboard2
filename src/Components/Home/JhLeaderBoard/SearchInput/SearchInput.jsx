@@ -28,6 +28,7 @@ const SearchInput = ({ setLeaderBoard, activeFps }) => {
     <form className={s.searchInputWrapper} onSubmit={(e) => e.preventDefault()}>
       <input
         type="text"
+        role="search"
         value={inpValue}
         onChange={handleOnChange}
         placeholder="Search for player name"

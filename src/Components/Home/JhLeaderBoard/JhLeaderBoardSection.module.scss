@@ -17,9 +17,27 @@
   color: #fff;
   font-size: 1.1rem;
   margin-top: 10px;
+  line-height: 1.5;
 }
 
-.noPlayerFound>span {
+@include small {
+  .noPlayerFound {
+    font-size: .9rem;
+    margin-top: -12px;
+  }
+}
+
+@include very-small {
+  .noPlayerFound {
+    font-size: .8rem;
+  }
+}
+
+.noPlayerFound .mark {
   color: #ffc906;
   font-weight: 600;
+}
+
+.noPlayerFound .newLine {
+  display: block;
 }

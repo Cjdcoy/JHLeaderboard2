@@ -57,9 +57,12 @@ const JhLeaderBoardSection = () => {
 
       {noDataFound && (
         <p className={s.noPlayerFound}>
-          There is no player with name <span>{searchParams.get("player")}</span>
-          , Or the player never played with <span>{getFpsNoun(activeFps)}</span>{" "}
-          fps
+          There is no player with name{" "}
+          <span className={s.mark}>{searchParams.get("player")}</span>
+          <span className={s.newLine}>
+            Or the player never played with{" "}
+            <span className={s.mark}>{getFpsNoun(activeFps)}</span> fps
+          </span>
         </p>
       )}
     </section>
