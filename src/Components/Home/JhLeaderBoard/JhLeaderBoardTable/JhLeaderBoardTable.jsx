@@ -1,15 +1,22 @@
+import { useState } from "react";
 import { getSortedLeaderBoard } from "src/Functions/helper";
 import s from "./JhLeaderBoardTable.module.scss";
 
 const JhLeaderBoardTable = ({ data, keyName }) => {
+  const [isListReversed, setIsListReversed] = useState(false);
   const leaderboardTitle =
     keyName === "0" ? "Mix" : keyName === "999" ? "All" : keyName;
   const sortedByScore = getSortedLeaderBoard(data);
+  const reverseClass = isListReversed ? s.reverse : "";
+
+  function toggleList() {
+    setIsListReversed((prevState) => !prevState);
+  }
 
   return (
     <div className={s.leaderboardWrapper}>
       <table className={s.leaderBoardTable}>
-        <thead className={s.leaderBoardHead}>
+        <thead className={s.leaderBoardHead} onClick={toggleList}>
           <tr>
             <th>Rank</th>
             <th>Player Name</th>
@@ -18,7 +25,7 @@ const JhLeaderBoardTable = ({ data, keyName }) => {
           </tr>
         </thead>
 
-        <tbody className={s.leaderBoardBody}>
+        <tbody className={`${s.leaderBoardBody} ${reverseClass}`}>
           {sortedByScore.map(({ Places, name, Score }, index) => {
             const places = Places.join(", ");
             const rank = index + 1;

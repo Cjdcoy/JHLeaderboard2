@@ -82,12 +82,18 @@
 .leaderBoardTable thead {
   background-color: #343a40;
   color: #fff;
+  cursor: pointer;
+  transition: background-color .2s;
 
   & th {
     padding: 15px;
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
+  }
+
+  &:hover {
+    background-color: #495057;
   }
 }
 
@@ -102,6 +108,11 @@
     position: absolute;
     width: 1px;
   }
+}
+
+.leaderBoardTable tbody.reverse {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .leaderBoardTable tbody tr {
